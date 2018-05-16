@@ -73,6 +73,17 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+          const hamburgerMenu = document.querySelector(".menu-icon-link");
+          
+           it("toggles the class 'menu-hidden' on clicking hamburger icon", function() {
+			  hamburgerMenu.click();
+			  expect(document.body.className).not.toContain("menu-hidden");
+
+			  hamburgerMenu.click();
+			  expect(document.body.className).toContain("menu-hidden");
+			});
+    
+
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
