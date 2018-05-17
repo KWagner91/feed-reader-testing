@@ -24,14 +24,14 @@ $(function() {
          it('has URL', function() {
 			 allFeeds.forEach(function(feed){
 				expect(feed.url).toBeDefined();
-				expect(feed.url.length).not.toBe(0)
+				expect(feed.url.length).not.toBe(0);
 			});
 		});
 
          it('hasName', function() {
 			 allFeeds.forEach(function(feed){
 				expect(feed.name).toBeDefined();
-				expect(feed.name.length).not.toBe(0)
+				expect(feed.name.length).not.toBe(0);
 
 		});
      });
@@ -48,18 +48,17 @@ $(function() {
 	describe('The menu', function() {
 
          it('is hidden', function() {
-			 
-			expect(document.body.className).toContain('menu-hidden');
+			expect($('body').hasClass("menu-hidden")).toBe(true);
 			 });
 
           const hamburgerMenu = document.querySelector('.menu-icon-link');
           
            it('toggles the class \'menu-hidden\' on clicking hamburger icon', function() {
 			  hamburgerMenu.click()
-			  expect(document.body.className).not.toContain('menu-hidden');
+			  expect($('body').hasClass("menu-hidden")).toBe(false);
 
 			  hamburgerMenu.click();
-			  expect(document.body.className).toContain('menu-hidden');
+			  expect($('body').hasClass("menu-hidden")).toBe(true);
 			});
 		});
     
