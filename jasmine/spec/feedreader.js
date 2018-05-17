@@ -66,19 +66,19 @@ $(function() {
 
 /**
 * @description Initial Entries test suite
-* @param {variable} entries - ".entry" element lengthwithin ".feed" container
+* @param {DOM element} entries - ".entry" element lengthwithin ".feed" container
 * @returns {number} expect entries array to contain elements
 */
     describe('Initial Entries', function() {
 
-         const entries = document.querySelector('.feed').getElementsByClassName('entry').length;
+
          
          beforeEach(function (done) {
 			loadFeed(0, done);
 		});
 		
           it('has > 1 entry after loadFeed function is called', function(done) {
-			  expect(entries).toBeGreaterThan(0);
+			  expect($('.feed .entry').length).toBeGreaterThan(0);
 			  done();
 		});
 		
@@ -106,7 +106,7 @@ $(function() {
 		
 		it('changes loaded content', function(done) {
 			const newContent = document.querySelector('.feed'.innerHTML);
-			expect(firstContent !== newContent);
+			expect(newContent).not.toEqual(firstContent);
 			done();
          	});
 		});
