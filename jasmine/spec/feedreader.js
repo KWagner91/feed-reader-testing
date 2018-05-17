@@ -93,21 +93,26 @@ $(function() {
 * @returns {string} expect string entries to be different
 */
 	describe('New Feed Selection', function() {
-		    
+				
 		beforeEach(function(done) {
-			loadFeed(0, function() {
-				const firstContent = document.querySelector('.feed').innerHTML;
+					loadFeed(0, function() {
+						defaultContent = $('.feed').text();
 
-				loadFeed(1, function() {
-					done();
-			});
-		  });
+						loadFeed(1, function() {
+							newContent = $('.feed').text();
+							done();
+						});
+					});
 		});
-		
-		it('changes loaded content', function(done) {
-			const newContent = document.querySelector('.feed'.innerHTML);
-			expect(newContent).not.toEqual(firstContent);
-			done();
-         	});
+				
+				it('changes loaded content', function() {
+					const newContent = $('.feed').html();
+					expect(newContent).not.toEqual(defaultContent);
+			
+		   });
 		});
+	
 }());
+		
+
+
