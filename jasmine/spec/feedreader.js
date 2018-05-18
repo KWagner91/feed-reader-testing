@@ -45,20 +45,22 @@ $(function() {
 * @param {variable} hambugerMenu - "menu-icon-link" DOM element
 * @returns {variable} toggle on click ".menu-hidden"
 */
+	const body = $('body');
+
 	describe('The menu', function() {
 
          it('is hidden', function() {
-			expect($('body').hasClass("menu-hidden")).toBe(true);
+			expect(body.hasClass("menu-hidden")).toBe(true);
 			 });
 
           const hamburgerMenu = document.querySelector('.menu-icon-link');
           
            it('toggles the class \'menu-hidden\' on clicking hamburger icon', function() {
 			  hamburgerMenu.click()
-			  expect($('body').hasClass("menu-hidden")).toBe(false);
+			  expect(body.hasClass("menu-hidden")).toBe(false);
 
 			  hamburgerMenu.click();
-			  expect($('body').hasClass("menu-hidden")).toBe(true);
+			  expect(body.hasClass("menu-hidden")).toBe(true);
 			});
 		});
     
@@ -93,22 +95,23 @@ $(function() {
 * @returns {string} expect string entries to be different
 */
 	describe('New Feed Selection', function() {
+		
+		let defaultContent;
+		let newContent;
 				
 		beforeEach(function(done) {
 					loadFeed(0, function() {
 						defaultContent = $('.feed').text();
+						done();
+					});
+				});
 
+			it('changes loaded content', function(done) {
 						loadFeed(1, function() {
 							newContent = $('.feed').text();
+							expect(newContent).not.toEqual(defaultContent);
 							done();
 						});
-					});
-		});
-				
-				it('changes loaded content', function() {
-					const newContent = $('.feed').html();
-					expect(newContent).not.toEqual(defaultContent);
-			
 		   });
 		});
 	
