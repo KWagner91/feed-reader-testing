@@ -72,9 +72,7 @@ $(function() {
 * @returns {number} expect entries array to contain elements
 */
     describe('Initial Entries', function() {
-
-
-         
+  
          beforeEach(function (done) {
 			loadFeed(0, done);
 		});
@@ -82,8 +80,7 @@ $(function() {
           it('has > 1 entry after loadFeed function is called', function(done) {
 			  expect($('.feed .entry').length).toBeGreaterThan(0);
 			  done();
-		});
-		
+		});	
 	});
 
    
@@ -100,18 +97,19 @@ $(function() {
 		let newContent;
 				
 		beforeEach(function(done) {
-					loadFeed(0, function() {
-						defaultContent = $('.feed').text();
-						done();
-					});
+					
+			loadFeed(0, function() {
+				defaultContent = $('.feed').text();
+				done();
 				});
+			});
 
 			it('changes loaded content', function(done) {
-						loadFeed(1, function() {
-							newContent = $('.feed').text();
-							expect(newContent).not.toEqual(defaultContent);
-							done();
-						});
+				loadFeed(1, function() {
+					newContent = $('.feed').text();
+					expect(newContent).not.toEqual(defaultContent);
+					done();
+				});
 		   });
 		});
 	
